@@ -1,5 +1,4 @@
 class Food
-
   attr_accessor :dish, :price
 
   def initialize(dish, price)

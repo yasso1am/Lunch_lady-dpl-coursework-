@@ -1,5 +1,12 @@
 require_relative 'food'
+require 'pry'
 
+class MenuItems
+  attr_accessor :maindish, :sidedish
+
+  def initialize
+    @maindish = maindish
+    @sidedish = sidedish
 ##MAINS
   @steak = Food.new('Steak', 22)
   @eggplant = Food.new('Eggplant Parmesean', 14)
@@ -19,11 +26,20 @@ require_relative 'food'
 @maindish = [@steak, @eggplant, @tikka, @salad, @padthai, @falafel]
 
 @sidedish = [@potato, @sidesalad, @calamari, @olives, @beans, @mushrooms]
+end
 
 def list_main_dish
   @maindish.each_with_index do |food, index|
   list_index = index + 1
 	puts "\t#{list_index}] #{food.dish} - $#{food.price}"
+  end
+end
+
+def pick_main(user_choice)
+  pick = user_choice
+  @maindish[pick - 1] do |food|
+    puts "You chose #{food.dish} for #{food.price}"
+binding.pry
   end
 end
 
@@ -39,5 +55,6 @@ def view_food_menu
   list_main_dish
   puts "\t===Side Dishes==="
   list_side_dish
+  puts
 end
- 
+end
