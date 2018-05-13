@@ -1,4 +1,3 @@
-'require pry'
 require_relative 'order'
 require_relative 'menu_items'
 require_relative 'food'
@@ -28,7 +27,9 @@ class Person
   def instructions
     puts "\t1) View the menu"
     puts "\t2) Place your order"
-    puts "\t3) Return to the main menu"
+    puts "\t3) Add items to the menu"
+    puts "\t4) Add some cash to your wallet"
+    puts "\t5) Return to the main menu"
     choice
   end
 
@@ -41,10 +42,31 @@ class Person
       when 2
         Order.new(self, @menu_items)
       when 3
+        Add.new(@menu_items)
+        instructions
+      when 4
+        add
+        instructions
+      when 5
         @intro
       else
         puts "Invalid Selection, Try Again"
         order_start
       end
-    end
   end
+
+
+  def add
+    puts "You currently have $#{@wallet}, how much would you like to add?"
+    add = gets.strip.to_i
+      if add > 15 || @wallet > 50
+        puts "Jeeze, you're kinda greedy. I think you should add less than that.".colorize(:red)
+        add
+      else
+        puts "Okay, that seems reasonable, adding $#{add} to your wallet"
+        @wallet = @wallet + add
+        puts
+        instructions
+      end
+  end
+end

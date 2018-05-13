@@ -1,5 +1,7 @@
 require_relative 'person'
 require_relative 'menu_items'
+require_relative 'add'
+require 'colorize'
 
 class LunchLady
   attr_accessor :person
@@ -13,7 +15,7 @@ class LunchLady
   def intro
     puts
     puts "*" * 50
-    puts "Welcome to the DPL Cafeteria"
+    puts "Welcome to the DPL Cafeteria".colorize(:cyan)
     puts "1) Start a new order"
     puts "2) View the menu"
     puts "3) Exit"

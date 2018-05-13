@@ -1,5 +1,4 @@
 require_relative 'food'
-require 'pry'
 
 class MenuItems
   attr_accessor :maindish, :sidedish
@@ -49,9 +48,11 @@ class MenuItems
   ### LIST FOOD MENU ###
 
   def view_food_menu
-    puts "\t===Main Dishes==="
+    puts "\t\t===== Main Dishes ====="
     list_main_dish
-    puts "\t===Side Dishes==="
+    puts
+    puts "\t\t===== Side Dishes ====="
+
     list_side_dish
     puts
   end
@@ -62,7 +63,7 @@ class MenuItems
     pick = user_choice
     item = @maindish[pick]
     puts
-    puts "You chose #{item.dish} for #{item.price}"
+    puts "You chose #{item.dish} for $#{item.price}"
     puts
   end
 
@@ -70,7 +71,7 @@ class MenuItems
     pick = user_choice
     item = @sidedish[pick]
     puts
-    puts "You chose #{item.dish} for #{item.price}"
+    puts "You chose #{item.dish} for $#{item.price}"
     puts
   end
 
